@@ -1,0 +1,25 @@
+
+body { 
+    background-color: #aeb5cf; 
+}
+.container{
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+}
+mat-form-field{
+    width: 100%;
+}
+button{
+    width: 100%;
+    margin: 5px;
+}
+.buttons{
+    margin: 10px;
+    display: flex;
+    background-color: #aaafbf;
+}
+.btn{
+    width: 300px;
+    margin: 5px;
+}

@@ -1,0 +1,9 @@
+<div class="container">
+<div class="divDay" *ngFor="let item of list">
+    <div class="dataDay">{{item.dt_txt | date: 'EEEE'}}</div>
+    <div class="data">{{item.dt_txt | date: 'MMMM dd'}}</div>
+    <div class="img"><img [src]="getUrlForImg(item.weather[0].icon)" alt=""></div>
+    <div class="temp">{{getMathRound(item.main.temp)}} &#8451;</div>
+   <div class="descript">{{data.list[0].weather[0].description}}</div>
+</div>
+</div>

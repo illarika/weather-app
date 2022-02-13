@@ -1,0 +1,109 @@
+
+<div class="currentWeather" *ngIf="data">
+  <div class="header">
+  <div class="divText">Current Weather</div>
+  <div class="divData">
+    {{data.list[0].dt_txt | date: 'dd.MM.yyyy'}}
+  </div>
+</div>
+  <div class="containerDiv">
+  <div class="divImg">
+  <img class="imgGen" [src]="getUrlForImg(data.list[0].weather[0].icon)" alt="">
+  <p>{{data.list[0].weather[0].description}}</p>
+  </div>
+  <!-- <div>{{data.city.name}}</div> -->
+  <div class="divTemp"><p class="text">{{getMathRound(data.list[0].main.temp)}} &#8451;</p>
+  <p>RealFeell:{{getMathRound( data.list[0].main.feels_like)}}</p>
+  </div>
+
+  <div class="divTime">
+  <p>Sunrise:{{data.city.sunrise * 1000 | date:'hh:mma'}}</p>
+  <p>Sunset:{{data.city.sunset * 1000 | date:'hh:mm a'}}</p>
+  <p>Duration:{{(data.city.sunrise - data.city.sunset) * 1000 | date:'hh:mm'}} hr</p>
+  </div>
+</div>
+</div>
+
+<div class="containerItem" *ngIf="data">
+  <div class="headerDay">
+    <div class="divTable">Today</div>
+    <div class="divTableImg"></div>
+    <div class="divTable">Forecast</div>
+    <div class="divTable">Temp (&#8451;)</div>
+    <div class="divTable">RealFeell</div>
+    <div class="divTable">Wind(km/h)</div>
+  </div>
+  <div class="infornDay"*ngFor="let item of list">
+    <div class="divTable">{{item.dt_txt | date: 'h a'}}</div>
+    <div class="divTableImg"><img [src]="getUrlForImg(item.weather[0].icon)" alt=""></div>
+    <div class="divTable">{{item.weather[0].description}}</div>
+    <div class="divTable">{{getMathRound(item.main.temp)}}</div>
+    <div class="divTable">{{getMathRound(item.main.feels_like)}}</div>
+    <div class="divTable">{{getMathRound(item.wind.speed)}}</div>
+  </div>
+</div>
+  <!-- <table>
+    <tr *ngFor="let item of data.list">
+      <td></td>
+    </tr>
+    <tr>
+        <td>Today</td>
+        <td>{{data.list[1].dt_txt | date: 'h a'}}</td>
+        <td>{{data.list[2].dt_txt | date: 'h a' }}</td>
+        <td>{{data.list[3].dt_txt | date: 'h a' }}</td>
+        <td>{{data.list[4].dt_txt | date: 'h a'}}</td>
+        <td>{{data.list[5].dt_txt | date: 'h a'}}</td>
+        <td>{{data.list[6].dt_txt | date: 'h a'}}</td>
+        
+    </tr>
+    <tr>
+        <td></td>
+        <td><img [src]="getUrlForImg(data.list[1].weather[0].icon)" alt=""></td>
+        <td><img [src]="getUrlForImg(data.list[2].weather[0].icon)" alt=""></td>
+        <td><img [src]="getUrlForImg(data.list[3].weather[0].icon)" alt=""></td>
+        <td><img [src]="getUrlForImg(data.list[4].weather[0].icon)" alt=""></td>
+        <td><img [src]="getUrlForImg(data.list[5].weather[0].icon)" alt=""></td>
+        <td><img [src]="getUrlForImg(data.list[6].weather[0].icon)" alt=""></td>
+        
+    </tr>
+    <tr>
+        <td>Forecast</td>
+        <td>{{data.list[1].weather[0].description}}</td>
+        <td>{{data.list[2].weather[0].description}}</td>
+        <td>{{data.list[3].weather[0].description}}</td>
+        <td>{{data.list[4].weather[0].description}}</td>
+        <td>{{data.list[5].weather[0].description}}</td>
+        <td>{{data.list[6].weather[0].description}}</td>
+        
+    </tr>
+    <tr>
+        <td>Temp (&#8451;)</td>
+        <td>{{getMathRound(data.list[1].main.temp)}}</td>
+        <td>{{getMathRound(data.list[2].main.temp)}}</td>
+        <td>{{getMathRound(data.list[3].main.temp)}}</td>
+        <td>{{getMathRound(data.list[4].main.temp)}}</td>
+        <td>{{getMathRound(data.list[5].main.temp)}}</td>
+        <td>{{getMathRound(data.list[6].main.temp)}}</td>
+        
+    </tr>
+    <tr>
+        <td>RealFeell</td>
+        <td> {{getMathRound(data.list[1].main.feels_like)}}</td>
+        <td> {{getMathRound(data.list[2].main.feels_like)}}</td>
+        <td> {{getMathRound(data.list[3].main.feels_like)}}</td>
+        <td> {{getMathRound(data.list[4].main.feels_like)}}</td>
+        <td> {{getMathRound(data.list[5].main.feels_like)}}</td>
+        <td> {{getMathRound(data.list[6].main.feels_like)}}</td>
+        
+    </tr>
+    <tr>
+        <td>Wind(km/h)</td>
+        <td>{{data.list[1].wind.speed}}</td>
+        <td>{{data.list[2].wind.speed}}</td>
+        <td>{{data.list[3].wind.speed}}</td>
+        <td>{{data.list[4].wind.speed}}</td>
+        <td>{{data.list[5].wind.speed}}</td>
+        <td>{{data.list[6].wind.speed}}</td>
+        
+    </tr>
+</table> -->
